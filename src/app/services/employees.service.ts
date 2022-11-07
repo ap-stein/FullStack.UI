@@ -16,4 +16,14 @@ export class EmployeesService {
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.baseApiUrl + '/api/employees');
   }
+
+  addEmployee(addEmployeeReqest: Employee): Observable<Employee>{
+    //following needed because API expected uuid to be provided in model => 400 error 
+    addEmployeeReqest.id = '00000000-0000-0000-0000-000000000000';
+    return this.http.post<Employee>(this.baseApiUrl + '/api/employees', addEmployeeReqest);
+  }
+
+  getEmployee(id: string): Observable<Employee> {
+   return this.http.get<Employee>(this.baseApiUrl + '/api/employees/' + id);
+  }
 }

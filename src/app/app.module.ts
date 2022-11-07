@@ -6,6 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
+import { FormsModule } from '@angular/forms';
+import { EditEmployeeComponent } from './components/employees/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   {
@@ -15,18 +18,29 @@ const routes: Routes = [
   {
     path: 'employees',
     component: EmployeesListComponent
+  },
+  {
+    path: 'employees/add',
+    component: AddEmployeeComponent
+  },
+  {
+    path: 'employees/edit/:id',
+    component: EditEmployeeComponent
   }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesListComponent
+    EmployeesListComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     RouterModule
