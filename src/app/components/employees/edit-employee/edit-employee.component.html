@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-6">
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="updateEmployee()">
                 <div class="mb-3">
                     <label for="id" class="form-label">Id</label>
                     <input type="text" class="form-control" id="id" name="name" readonly
@@ -35,7 +35,8 @@
                     [(ngModel)] = "employeeDetails.department">
                 </div>
             
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mr-5">Save</button>
+                <button type="button" class="btn btn-danger" (click)="deleteEmployee(employeeDetails.id)">Delete</button>
             </form>
         </div>
     </div>
